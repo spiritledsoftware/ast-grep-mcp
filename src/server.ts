@@ -1,36 +1,42 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import {
-  versionInputSchema,
-  searchInputSchema,
-  scanInputSchema,
-  testInputSchema,
-} from "./schemas.js";
-import { createAstGrepTools } from "./tools.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
+import { versionInputSchema, searchInputSchema, scanInputSchema, testInputSchema } from "./schemas";
+import { createAstGrepTools } from "./tools";
+import { version as packageJsonVersion } from "../package.json";
 
 export function createServer(): McpServer {
-  const server = new McpServer({ name: "ast-grep-mcp", version: "0.1.0" });
+  const server = new McpServer({ name: "ast-grep-mcp", version: packageJsonVersion });
   const tools = createAstGrepTools();
 
-  server.tool(
+  server.registerTool(
     "ast_grep_search",
-    "Search code with ast-grep run. Rewrites require explicit apply boolean.",
-    searchInputSchema.shape,
+    {
+      description: "Search code with ast-grep run. Rewrites require explicit apply boolean.",
+      inputSchema: searchInputSchema,
+    },
     tools.search,
   );
 
-  server.tool(
+  server.registerTool(
     "ast_grep_scan",
-    "Scan code with ast-grep scan using config, rule, inline rules, or filters.",
-    scanInputSchema.shape,
+    {
+      description: "Scan code with ast-grep scan using config, rule, inline rules, or filters.",
+      inputSchema: scanInputSchema,
+    },
     tools.scan,
   );
 
-  server.tool("ast_grep_test", "Run ast-grep rule tests.", testInputSchema.shape, tools.test);
+  server.registerTool(
+    "ast_grep_test",
+    { description: "Run ast-grep rule tests.", inputSchema: testInputSchema },
+    tools.test,
+  );
 
-  server.tool(
+  server.registerTool(
     "ast_grep_version",
-    "Report the ast-grep binary version and resolved path.",
-    versionInputSchema.shape,
+    {
+      description: "Report the ast-grep binary version and resolved path.",
+      inputSchema: versionInputSchema,
+    },
     tools.version,
   );
 

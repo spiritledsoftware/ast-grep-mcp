@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createServer } from "../src/server.js";
+import { createServer } from "../src/server";
 
 describe("createServer", () => {
   it("creates an MCP server", () => {

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { resolveAstGrepBinary } from "../src/binary.js";
+import { resolveAstGrepBinary } from "../src/binary";
 
 function fakeBinary(dir: string, name: string, output: string): string {
   const file = path.join(dir, name);

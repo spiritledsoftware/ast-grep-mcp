@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { createAstGrepTools } from "../src/tools.js";
+import { createAstGrepTools } from "../src/tools";
 
 function tempWorkspace(): string {
   const tempRoot = path.join(process.cwd(), ".tmp-tests");

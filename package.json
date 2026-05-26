@@ -1,12 +1,30 @@
 {
   "name": "ast-grep-mcp",
   "version": "0.0.0",
-  "description": "MCP stdio server exposing ast-grep to agents",
+  "description": "MCP stdio server exposing ast-grep structural search and safe rewrites to agents",
+  "keywords": [
+    "ast-grep",
+    "codemod",
+    "mcp",
+    "model-context-protocol",
+    "structural-search",
+    "typescript"
+  ],
+  "homepage": "https://github.com/spiritledsoftware/ast-grep-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/spiritledsoftware/ast-grep-mcp/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spiritledsoftware/ast-grep-mcp.git"
+  },
   "bin": {
     "ast-grep-mcp": "dist/index.js"
   },
   "files": [
     "dist",
+    "CHANGELOG.md",
     "README.md"
   ],
   "type": "module",
@@ -15,6 +33,10 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "clean": "rm -rf dist",
@@ -26,7 +48,12 @@
     "lint:fix": "oxlint --fix .",
     "test": "vitest run",
     "typecheck": "tsc",
-    "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build"
+    "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm run verify && changeset publish",
+    "pack:dry-run": "pnpm run build && npm pack --dry-run",
+    "prepublishOnly": "pnpm run verify"
   },
   "dependencies": {
     "@ast-grep/cli": "^0.42.3",
@@ -34,6 +61,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "@types/node": "^25.9.1",
     "oxfmt": "^0.51.0",
     "oxlint": "^1.66.0",
@@ -43,6 +71,7 @@
     "vitest": "^4.1.7"
   },
   "engines": {
-    "node": ">=20"
-  }
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.3.0"
 }

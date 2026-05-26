@@ -2,7 +2,7 @@ import path from "node:path";
 import fs from "node:fs";
 import os from "node:os";
 import { describe, expect, it } from "vitest";
-import { resolveWorkspaceRoot, safeRelativePaths } from "../src/pathSafety.js";
+import { resolveWorkspaceRoot, safeRelativePaths } from "../src/pathSafety";
 
 describe("resolveWorkspaceRoot", () => {
   it("defaults to the current working directory", () => {

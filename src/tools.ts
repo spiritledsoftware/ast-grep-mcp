@@ -1,9 +1,9 @@
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { resolveAstGrepBinary, type ResolvedBinary } from "./binary.js";
-import { resolveWorkspaceRoot, safeRelativePath, safeRelativePaths } from "./pathSafety.js";
-import { assertCommandSucceeded, runCommand, type CommandResult } from "./runner.js";
-import { parseJsonOutput, toErrorToolResult, toStructuredToolResult } from "./results.js";
-import type { ScanInput, SearchInput, TestInput, VersionInput } from "./schemas.js";
+import type { CallToolResult } from "@modelcontextprotocol/sdk/types";
+import { resolveAstGrepBinary, type ResolvedBinary } from "./binary";
+import { resolveWorkspaceRoot, safeRelativePath, safeRelativePaths } from "./pathSafety";
+import { assertCommandSucceeded, runCommand, type CommandResult } from "./runner";
+import { parseJsonOutput, toErrorToolResult, toStructuredToolResult } from "./results";
+import type { ScanInput, SearchInput, TestInput, VersionInput } from "./schemas";
 
 export interface ToolDependencies {
   resolveBinary?: () => Promise<ResolvedBinary>;
