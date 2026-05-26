@@ -39,21 +39,21 @@
     "provenance": true
   },
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "pnpm run clean && tsc -p tsconfig.build.json && rolldown -c",
+    "changeset": "changeset",
+    "clean": "rm -rf dist",
     "dev": "tsx src/index.ts",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
+    "pack:dry-run": "pnpm run build && npm pack --dry-run",
+    "prepublishOnly": "pnpm run verify",
+    "release": "pnpm run verify && changeset publish",
     "test": "vitest run",
     "typecheck": "tsc",
     "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm run verify && changeset publish",
-    "pack:dry-run": "pnpm run build && npm pack --dry-run",
-    "prepublishOnly": "pnpm run verify"
+    "version-packages": "changeset version"
   },
   "dependencies": {
     "@ast-grep/cli": "^0.42.3",
