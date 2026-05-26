@@ -1,7 +1,7 @@
 import { access, constants } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { runCommand } from "./runner.js";
+import { runCommand } from "./runner";
 
 export interface ResolvedBinary {
   path: string;

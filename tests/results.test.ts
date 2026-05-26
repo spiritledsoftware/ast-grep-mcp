@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseJsonOutput, toStructuredToolResult } from "../src/results.js";
+import { parseJsonOutput, toStructuredToolResult } from "../src/results";
 
 describe("parseJsonOutput", () => {
   it("returns empty array for empty output", () => {

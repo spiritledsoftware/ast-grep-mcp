@@ -1,43 +1,20 @@
 ---
-title: Ast Grep MCP Server
-summary: Ast-grep MCP server with search, scan, test, and version tools; safe path handling; subprocess execution controls; structured JSON responses; and passing verification.
+title: AST Grep MCP Server
+summary: AST Grep MCP server architecture, tool behavior, path safety, result handling, and integration expectations.
 tags: []
 related: [architecture/mcp_server/ast_grep_mcp_server.md]
 keywords: []
-createdAt: "2026-05-25T19:59:04.606Z"
-updatedAt: "2026-05-26T13:07:12.531Z"
-consolidated_at: "2026-05-26T13:22:33.247Z"
-consolidated_from:
-  [
-    {
-      date: "2026-05-26T13:22:33.247Z",
-      path: architecture/mcp_server/ast_grep_mcp_server.abstract.md,
-      reason: "These files all describe the same completed ast-grep MCP server implementation. The main markdown file is the richest source, while the abstract, overview, and topic context are condensed overlaps that should be consolidated to avoid duplication.",
-    },
-    {
-      date: "2026-05-26T13:22:33.247Z",
-      path: architecture/mcp_server/ast_grep_mcp_server.overview.md,
-      reason: "These files all describe the same completed ast-grep MCP server implementation. The main markdown file is the richest source, while the abstract, overview, and topic context are condensed overlaps that should be consolidated to avoid duplication.",
-    },
-    {
-      date: "2026-05-26T13:22:33.247Z",
-      path: architecture/mcp_server/context.md,
-      reason: "These files all describe the same completed ast-grep MCP server implementation. The main markdown file is the richest source, while the abstract, overview, and topic context are condensed overlaps that should be consolidated to avoid duplication.",
-    },
-  ]
+createdAt: '2026-05-25T19:59:04.606Z'
+updatedAt: '2026-05-26T14:56:49.100Z'
 ---
-
 ## Reason
-
-Curate the confirmed implementation status and architecture details from the completed work summary.
+Curate concise architecture notes about the MCP server from the provided context
 
 ## Raw Concept
-
 **Task:**
-Document the completed ast-grep MCP server implementation and verification status
+Document the AST Grep MCP server architecture and related implementation details.
 
 **Changes:**
-
 - Identified the repository as empty and requiring a fresh scaffold
 - Narrowed the first design choice to the MCP transport and API surface
 - Recommended stdio as the initial transport with dual transport as a later expansion path
@@ -51,9 +28,9 @@ Document the completed ast-grep MCP server implementation and verification statu
 - Built the TypeScript stdio MCP server
 - Added safety checks, runner controls, structured responses, and documentation
 - Added unit and integration tests
+- Captured the server-oriented architecture context for durable recall.
 
 **Files:**
-
 - `ast_grep_search`: runs `ast-grep run`.
 - `ast_grep_scan`: runs `ast-grep scan` against config, rule file, inline rules, or filter.
 - `ast_grep_test`: runs `ast-grep test` for rule suites.
@@ -87,45 +64,33 @@ Document the completed ast-grep MCP server implementation and verification statu
 - tests/tools.test.ts
 
 **Flow:**
-plan -> implement server and tools -> add safety and parsing -> add tests/docs -> run verification
+request -> validate paths -> run matching logic -> format results -> expose MCP tools
 
-**Timestamp:** 2026-05-26T13:06:52.559Z
+**Timestamp:** 2026-05-26T14:56:41.088Z
 
-**Author:** ByteRover context engineer
+**Author:** ByteRover context curation
 
 ## Narrative
-
 ### Structure
-
-The implementation centers on a TypeScript stdio MCP server with tool modules, a subprocess runner, result formatting, schema definitions, and path safety utilities.
+The curated knowledge centers on the MCP server implementation and the supporting modules that govern execution, safety checks, result shaping, and tool exposure.
 
 ### Dependencies
-
-The server depends on ast-grep binary discovery, safe workspace-relative path handling, and structured JSON parsing for correct tool responses.
+Depends on the runner, result serialization, schema definitions, and path safety logic to keep server operations reliable.
 
 ### Highlights
-
-Verification passed with 7 test files and 41 tests, plus successful typecheck and build runs.
+Preserves the server architecture as a reusable knowledge entry for future lookups and updates.
 
 ### Rules
-
 Use UPSERT for context-tree curation unless a direct ADD or UPDATE is explicitly required. Do not rely on chat-only recall for durable module knowledge.
 
 ### Examples
-
 Example outcome: working module findings are stored in the context tree so future sessions can retrieve them directly.
 
 ## Facts
+- **server_type**: The project implements an AST Grep MCP server. [project]
+- **curation_scope**: The knowledge being curated focuses on server architecture, path safety, runner behavior, result handling, schemas, and tools. [project]
 
-- **implementation_status**: The implementation is complete. [project]
-- **server_type**: A TypeScript stdio MCP server was built. [project]
-- **tools**: The server adds ast_grep_search, ast_grep_scan, ast_grep_test, and ast_grep_version tools. [project]
-- **binary_resolution**: Binary resolution supports AST_GREP_BIN, PATH, verified sg, and @ast-grep/cli fallback. [project]
-- **path_safety**: Workspace-relative path safety rejects absolute paths, traversal, and symlink escapes. [project]
-- **subprocess_controls**: Subprocess execution includes timeouts and output limits. [project]
-- **response_parsing**: Structured MCP responses support JSON stream and array parsing. [project]
-- **verification**: Verification passed for npm test, npm run typecheck, and npm run build. [project]
-- **review_status**: The final review subagent call was interrupted, but its surfaced review findings were fixed before the final verification run. [project]
+---
 
 ## Combined Overview
 

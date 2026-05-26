@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { buildScanArgs, buildSearchArgs, createAstGrepTools } from "../src/tools.js";
-import type { CommandResult } from "../src/runner.js";
+import { buildScanArgs, buildSearchArgs, createAstGrepTools } from "../src/tools";
+import type { CommandResult } from "../src/runner";
 
 const binary = { path: "/bin/ast-grep", source: "path" as const, version: "ast-grep 1.0.0" };
 

@@ -116,8 +116,8 @@ export type VersionInput = z.infer<typeof versionInputSchema>;
 Create `src/server.ts` with a minimal MCP server:
 
 ```ts
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { versionInputSchema } from "./schemas.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
+import { versionInputSchema } from "./schemas";
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "ast-grep-mcp", version: "0.1.0" });
@@ -140,8 +140,8 @@ Create `src/index.ts` with stdio transport:
 
 ```ts
 #!/usr/bin/env node
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { createServer } from "./server.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio";
+import { createServer } from "./server";
 
 async function main(): Promise<void> {
   const server = createServer();
@@ -162,7 +162,7 @@ Create `tests/smoke.test.ts`:
 
 ```ts
 import { describe, expect, it } from "vitest";
-import { createServer } from "../src/server.js";
+import { createServer } from "../src/server";
 
 describe("createServer", () => {
   it("creates an MCP server", () => {
@@ -199,7 +199,7 @@ Create `tests/pathSafety.test.ts`:
 ```ts
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { resolveWorkspaceRoot, safeRelativePaths } from "../src/pathSafety.js";
+import { resolveWorkspaceRoot, safeRelativePaths } from "../src/pathSafety";
 
 describe("resolveWorkspaceRoot", () => {
   it("defaults to the current working directory", () => {
