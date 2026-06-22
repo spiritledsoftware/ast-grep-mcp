@@ -57,7 +57,7 @@
     "version-packages": "changeset version"
   },
   "dependencies": {
-    "@ast-grep/cli": "^0.43.0",
+    "@ast-grep/cli": "^0.44.0",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^4.4.3"
   },
