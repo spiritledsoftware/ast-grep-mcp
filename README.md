@@ -112,21 +112,23 @@ Use `ast_grep_version` to confirm which binary the server selected.
 
 ```bash
 pnpm install
-pnpm run verify
 ```
+
+The pre-commit hook runs `oxfmt --check` and `oxlint` on staged files only. Typecheck, tests, and the build are left to CI, which runs `pnpm run verify` on every pull request. Check a change locally with targeted commands: the test files it touches (`pnpm exec vitest run <file>`), `pnpm run typecheck`, and format and lint on the changed files.
 
 Useful scripts:
 
-| Script                  | Description                                                   |
-| ----------------------- | ------------------------------------------------------------- |
-| `pnpm run dev`          | Start the MCP server from TypeScript source.                  |
-| `pnpm run build`        | Clean and build declarations plus the bundled CLI entrypoint. |
-| `pnpm run test`         | Run the Vitest suite.                                         |
-| `pnpm run typecheck`    | Run TypeScript type checking.                                 |
-| `pnpm run format:check` | Check formatting with oxfmt.                                  |
-| `pnpm run lint`         | Lint with oxlint.                                             |
-| `pnpm run verify`       | Run format, lint, typecheck, tests, and build.                |
-| `pnpm run pack:dry-run` | Build and inspect the npm package contents.                   |
+| Script                  | Description                                                     |
+| ----------------------- | --------------------------------------------------------------- |
+| `pnpm run dev`          | Start the MCP server from TypeScript source.                    |
+| `pnpm run build`        | Clean and build declarations plus the bundled CLI entrypoint.   |
+| `pnpm run test`         | Run the Vitest suite.                                           |
+| `pnpm run typecheck`    | Run TypeScript type checking.                                   |
+| `pnpm run format:check` | Check formatting with oxfmt.                                    |
+| `pnpm run lint`         | Lint with oxlint.                                               |
+| `pnpm run lint:staged`  | Check staged files with oxfmt and oxlint (the pre-commit hook). |
+| `pnpm run verify`       | Run format, lint, typecheck, tests, and build (CI runs this).   |
+| `pnpm run pack:dry-run` | Build and inspect the npm package contents.                     |
 
 For local MCP development against this repository:
 
