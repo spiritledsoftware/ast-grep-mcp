@@ -12,8 +12,8 @@ permissions:
   id-token: write
 
 env:
-  # CI runs explicit quality gates; do not let Changesets' git pushes invoke
-  # Husky pre-push and start another pnpm verify in the release workspace.
+  # CI runs explicit quality gates; do not let Changesets' git operations
+  # invoke Husky hooks in the release workspace.
   HUSKY: 0
 
 concurrency:
